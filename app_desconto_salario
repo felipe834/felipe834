@@ -1,0 +1,33 @@
+import sys
+import PyQt5
+from PyQt5 import uic, QtWidgets
+
+
+def principal():
+    salario = formulario.txt_salario.text()
+    salario = float(salario)
+    desconto = formulario.txt_desconto.text()
+    desconto = float(desconto)
+    resultado = (salario/100*desconto) - salario
+    print(salario)
+    print(desconto)
+    print(resultado)
+
+    #colocando resultado no formato decimal com duas casas 11.25
+    result = formulario.lb_resultado.setText(str(f'{resultado:.2f}'))
+
+    #calclulo do fgts
+    ftgs_mes: float = salario/100*8
+    fgts_anual: float = (salario/100*8)*12
+    print(ftgs_mes)
+    print(fgts_anual)
+    result_fgts_mes = formulario.LB_FGTS_MES.setText(str(f'{ftgs_mes:.2f}'))
+    result_fgts_anual = formulario.LB_FGTS_ANUAL.setText(str(f'{fgts_anual:.2f}'))
+
+
+
+app = QtWidgets.QApplication([])
+formulario = uic.loadUi('calc2.ui')
+formulario.btn_calcular.clicked.connect(principal)
+formulario.show()
+app.exec()
