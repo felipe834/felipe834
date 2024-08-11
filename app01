@@ -1,0 +1,22 @@
+import sys
+import PyQt5
+from PyQt5 import uic, QtWidgets
+
+
+def principal():
+    salario = formulario.txt_salario.text()
+    salario = float(salario)
+    desconto = formulario.txt_desconto.text()
+    desconto = float(desconto)
+    resultado = salario - desconto
+    print(salario)
+    print(desconto)
+    print(resultado)
+    result=formulario.lb_resultado.SetText(resultado)
+
+
+app = QtWidgets.QApplication([])
+formulario = uic.loadUi('calc.ui')
+formulario.btn_calcular.clicked.connect(principal)
+formulario.show()
+app.exec()
